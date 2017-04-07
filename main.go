@@ -41,8 +41,14 @@ func getRecentChangeId() (string, error) {
 // can send in whispers, etc.
 func processStash(stash *api.Stash) {
 	for _, item := range stash.Items {
+		for _, filter := range filters {
+			if filter.Match(item) {
+				log.Printf("Match: %v, account = %v, note = %v", item.Type, stash.AccountName, item.Note)
+			}
+		}
 		if item.Type == "Ancient Reliquary Key" {
-			log.Printf("Ancient Reliquary Key: account = %v, league = %v, note = %v, tab = %v", stash.AccountName, item.League, item.Note, stash.Label)
+			log.Printf("Ancient Reliquary Key: account = %v, league = %v, note = %v, tab = %v", 
+				stash.AccountName, item.League, item.Note, stash.Label)
 		}
 	}
 }
