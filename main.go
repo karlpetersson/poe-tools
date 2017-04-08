@@ -39,17 +39,17 @@ func getRecentChangeId() (string, error) {
 // This is where we look through stashes for items of interest. For this example, we'll just log
 // reliquary key activity. You might want to parse buyouts, play sounds, compose messages that you
 // can send in whispers, etc.
-func processStash(stash *api.Stash) {
+func processStash(stash *api.Stash, filters []Filter) {
 	for _, item := range stash.Items {
 		for _, filter := range filters {
-			if filter.Match(item) {
-				log.Printf("Match: %v, account = %v, note = %v", item.Type, stash.AccountName, item.Note)
+			if filter.match(item) {
+				log.Printf("Match: name = %v, account = %v, note = %v", item.Type, stash.AccountName, item.Note)
 			}
 		}
-		if item.Type == "Ancient Reliquary Key" {
-			log.Printf("Ancient Reliquary Key: account = %v, league = %v, note = %v, tab = %v", 
-				stash.AccountName, item.League, item.Note, stash.Label)
-		}
+		//if item.Type == "Ancient Reliquary Key" {
+		//	log.Printf("Ancient Reliquary Key: account = %v, league = %v, note = %v, tab = %v", 
+		//		stash.AccountName, item.League, item.Note, stash.Label)
+		//}
 	}
 }
 
@@ -72,6 +72,18 @@ func main() {
 		subscription.Close()
 	}()
 
+	opalRing := Filter{"Opal Ring", []PropertyFilter{}}
+	opalRingFilter := iLevelFilter{10, GreaterThan{}}
+	opalRing.Properties = append(opalRing.Properties, opalRingFilter)
+
+	aKey := Filter{"Ancient Reliquary Key", []PropertyFilter{}}
+	aKeyFilter := iLevelFilter{10, GreaterThan{}}
+	aKey.Properties = append(aKey.Properties, aKeyFilter)
+
+	filters := make([]Filter, 10)
+	filters = append(filters, opalRing)
+	filters = append(filters, aKey)
+
 	// Loop forever over results.
 	for result := range subscription.Channel {
 		if result.Error != nil {
@@ -79,7 +91,7 @@ func main() {
 			continue
 		}
 		for _, stash := range result.PublicStashTabs.Stashes {
-			processStash(&stash)
+			processStash(&stash, filters)
 		}
 	}
 }
