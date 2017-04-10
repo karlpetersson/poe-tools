@@ -4,9 +4,9 @@ import (
     "regexp"
     "strconv"
     "fmt"
+    "strings"
 )
 
-var chaosExConv = 100
 var priceRegexp = regexp.MustCompile(`~b/o (?P<Amount>\d{1,4}) (?P<Type>[a-z]+)`)
 var altPriceRegexp = regexp.MustCompile(`~price (?P<Amount>\d{1,4}) (?P<Type>[a-z]+)`)
 //var altPriceRegexp = regexp.MustCompile(`~price (?P<Amount>\d{1,4}) (?P<Type>[(?:chaos|exa)])`)
@@ -20,7 +20,7 @@ type nameFilter struct {
 }
 
 func (f nameFilter) compare(item api.Item) bool {
-    return item.Name == f.Value
+    return strings.Trim(item.Name, "<<set:MS>><<set:M>><<set:S>>") == f.Value
 }
 
 type typeFilter struct {
@@ -70,7 +70,16 @@ func (f priceFilter) compare(item api.Item) bool {
     }
 
     if val, ok := defaultConversionTable[result["Type"]]; ok {
-        price *= int(val)
+        price = int(float64(price) * val)
+        /*log.Printf("val: %v", val)
+        log.Printf("price: %v", price)*/
+    } else {
+        return false
+    }
+
+    // handle troll listings
+    if (price == 0) {
+        return false
     }
 
     return f.Op.eval(price, f.Value)
