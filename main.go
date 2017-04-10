@@ -9,6 +9,7 @@ import (
 	"os/signal"
 
 	"github.com/ccbrown/poe-go/api"
+	"github.com/atotto/clipboard"
 )
 
 // To begin receiving newly updated items immediately, we need to get a recent change id. poe.ninja
@@ -36,6 +37,17 @@ func getRecentChangeId() (string, error) {
 	return stats.NextChangeId, nil
 }
 
+func handleMatch(item api.Item, stash *api.Stash) {
+	msg := newMessage(item, stash)
+
+	log.Printf("Match: name = %v, ign = %v, note = %v", item.Type, stash.LastCharacterName, item.Note)
+	log.Printf("Copying: " + msg)
+
+	if err := clipboard.WriteAll(msg); err != nil {
+		panic(err)
+	}
+}
+
 // This is where we look through stashes for items of interest. For this example, we'll just log
 // reliquary key activity. You might want to parse buyouts, play sounds, compose messages that you
 // can send in whispers, etc.
@@ -47,13 +59,17 @@ func processStash(stash *api.Stash, filters []Filter) {
 
 		for _, filter := range filters {
 			if filter.match(item) {
-				log.Printf("Match: name = %v, account = %v, ign = %v, note = %v", item.Type, stash.AccountName, stash.LastCharacterName, item.Note)
+				handleMatch(item, stash)
 			}
 		}
 	}
 }
 
 func main() {
+	//messages := make(chan string)
+	//c := startSocketServer()
+	//go socketPush(c)
+
 	log.Printf("requesting a recent change id from poe.ninja...")
 	recentChangeId, err := getRecentChangeId()
 	if err != nil {
@@ -73,6 +89,8 @@ func main() {
 	}()
 
 	filters := loadFilters()
+
+	log.Printf("num filters: %v", len(filters))
 
 	// Loop forever over results.
 	for result := range subscription.Channel {

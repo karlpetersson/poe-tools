@@ -5,17 +5,18 @@ import (
 )
 
 type Filter struct {
-    ItemName string
+    //ItemName string
     Properties []PropertyFilter
 }
 
 func (f Filter) match(item api.Item) bool {
-    if f.ItemName != item.Type {
-        return false
+    if len(f.Properties) == 0 {
+        // empty filter
+        return false;
     }
 
     for _, prop := range f.Properties {
-        if !prop.compare(item) {
+        if isMatch := prop.compare(item); isMatch == false {
             return false
         }
     }
