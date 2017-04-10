@@ -7,8 +7,9 @@ import (
 )
 
 var chaosExConv = 100
-var priceRegexp = regexp.MustCompile(`~b/o (?P<Amount>\d{1,4}) (?P<Type>(?:chaos|exa))`)
-var altPriceRegexp = regexp.MustCompile(`~price (?P<Amount>\d{1,4}) (?P<Type>(?:chaos|exa))`)
+var priceRegexp = regexp.MustCompile(`~b/o (?P<Amount>\d{1,4}) (?P<Type>[a-z]+)`)
+var altPriceRegexp = regexp.MustCompile(`~price (?P<Amount>\d{1,4}) (?P<Type>[a-z]+)`)
+//var altPriceRegexp = regexp.MustCompile(`~price (?P<Amount>\d{1,4}) (?P<Type>[(?:chaos|exa)])`)
 
 type PropertyFilter interface {
     compare(item api.Item) bool
@@ -63,8 +64,13 @@ func (f priceFilter) compare(item api.Item) bool {
         fmt.Println(err)
     }
 
-    if result["Type"] == "exa" {
-        price *= chaosExConv
+    //if price is in chaos, don't bother to look up
+    if result["Type"] == "chaos" {
+        return f.Op.eval(price, f.Value)
+    }
+
+    if val, ok := defaultConversionTable[result["Type"]]; ok {
+        price *= int(val)
     }
 
     return f.Op.eval(price, f.Value)

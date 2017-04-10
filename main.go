@@ -12,6 +12,10 @@ import (
 	"github.com/atotto/clipboard"
 )
 
+func getRecentCurrencyRatios() (string, error) {
+	return "", nil
+}
+
 // To begin receiving newly updated items immediately, we need to get a recent change id. poe.ninja
 // can provide us with that.
 func getRecentChangeId() (string, error) {
@@ -76,6 +80,14 @@ func main() {
 		log.Fatal(err)
 	}
 	log.Printf("starting with change id %v", recentChangeId)
+
+	log.Printf("requesting current currency ratios from poe.ninja...")
+	/*currencyConvertionTable, err := getRecentCurrencyRatios()
+	if err != nil {
+		log.Printf("Could not get current ratios, using default")
+		currencyConvertionTable = getDefaultCurrencyRatios()
+	}*/
+	//currencyConvertionTable := getDefaultCurrencyRatios()
 
 	subscription := api.OpenPublicStashTabSubscription(recentChangeId)
 
