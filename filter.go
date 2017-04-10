@@ -10,7 +10,7 @@ type Filter struct {
 }
 
 func (f Filter) match(item api.Item) bool {
-    if f.ItemName != item.Name {
+    if f.ItemName != item.Type {
         return false
     }
 
