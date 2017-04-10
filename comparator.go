@@ -64,6 +64,11 @@ func (f priceFilter) compare(item api.Item) bool {
         fmt.Println(err)
     }
 
+    // handle troll listings
+    if price == 0 {
+        return false
+    }
+
     //if price is in chaos, don't bother to look up
     if result["Type"] == "chaos" {
         return f.Op.eval(price, f.Value)
@@ -77,10 +82,37 @@ func (f priceFilter) compare(item api.Item) bool {
         return false
     }
 
-    // handle troll listings
-    if (price == 0) {
-        return false
-    }
-
     return f.Op.eval(price, f.Value)
+}
+
+type isCorruptedFilter struct {
+    Value bool
+}
+
+func (f isCorruptedFilter) compare(item api.Item) bool {
+    return item.IsCorrupted == f.Value
+}
+
+type isUniqueFilter struct {
+    Value bool
+}
+
+func (f isUniqueFilter) compare(item api.Item) bool {
+    return (item.FrameType == api.UniqueItemFrameType) == f.Value
+}
+
+type typeHasPrefixFilter struct {
+    Value string
+}
+
+func (f typeHasPrefixFilter) compare(item api.Item) bool {
+    return strings.HasPrefix(item.Type, f.Value)
+}
+
+type typeHasSuffixFilter struct {
+    Value string
+}
+
+func (f typeHasSuffixFilter) compare(item api.Item) bool {
+    return strings.HasSuffix(item.Type, f.Value)
 }

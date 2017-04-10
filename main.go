@@ -7,9 +7,11 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"runtime"
 
 	"github.com/ccbrown/poe-go/api"
 	"github.com/atotto/clipboard"
+	"github.com/fatih/color"
 )
 
 func getRecentCurrencyRatios() (string, error) {
@@ -44,8 +46,13 @@ func getRecentChangeId() (string, error) {
 func handleMatch(item api.Item, stash *api.Stash) {
 	msg := newMessage(item, stash)
 
-	log.Printf("Match: name = %v, ign = %v, note = %v", item.Type, stash.LastCharacterName, item.Note)
-	log.Printf("Copying: " + msg)
+	//log.Printf("Match: name = %v, ign = %v, note = %v", item.Type, stash.LastCharacterName, item.Note)
+	color.Green("-----")
+	color.White(msg)
+	
+	if runtime.GOOS == "windows" {
+		playNotification()
+	}
 
 	if err := clipboard.WriteAll(msg); err != nil {
 		panic(err)
@@ -73,7 +80,10 @@ func main() {
 	//messages := make(chan string)
 	//c := startSocketServer()
 	//go socketPush(c)
-
+	if runtime.GOOS == "windows" {
+		initSound()
+	}
+	
 	log.Printf("requesting a recent change id from poe.ninja...")
 	recentChangeId, err := getRecentChangeId()
 	if err != nil {
