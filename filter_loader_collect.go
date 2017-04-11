@@ -4,11 +4,12 @@ import (
     "log"
 )
 
-func loadFilters() []Filter {
+func loadDataFilters() []Filter {
     filters := make([]Filter, 0)
 
     // fun stuff 
     eyeOfChayula := Filter {
+        realValue: 0,
         []PropertyFilter {
             nameFilter {
                 "Eye of Chayula",
@@ -16,61 +17,45 @@ func loadFilters() []Filter {
             isCorruptedFilter {
                 false,
             },
-            priceFilter {
-                6,
-                LessThanOrEqualTo{},
-            },
         },
     }
     filters = append(filters, eyeOfChayula)
 
     theEnlightened := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeFilter {
                 "The Enlightened",
-            },
-            priceFilter {
-                5,
-                LessThanOrEqualTo{},
             },
         },
     }
     filters = append(filters, theEnlightened)
 
     theValkyrie := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeFilter {
                 "The Valkyrie",
-            },
-            priceFilter {
-                5,
-                LessThanOrEqualTo{},
             },
         },
     }
     filters = append(filters, theValkyrie)
 
     bowDream := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeFilter {
                 "Bowyer's Dream",
-            },
-            priceFilter {
-                10,
-                LessThanOrEqualTo{},
             },
         },
     }
     filters = append(filters, bowDream)
 
    brittleEmperor := Filter{
+    realValue: 0,
         []PropertyFilter {
             typeFilter {
                 "The Brittle Emperor",
-            },
-            priceFilter {
-                2,
-                LessThanOrEqualTo{},
             },
         },
     }
@@ -80,13 +65,10 @@ func loadFilters() []Filter {
 
     // #1 Ancient reliquary key
     ancientReliquaryKeyFilter := Filter {
+        realValue: 0,
         []PropertyFilter {
             typeFilter {
                 "Ancient Reliquary Key",
-            },
-            priceFilter {
-                55,
-                LessThanOrEqualTo{},
             },
         },
     }
@@ -94,6 +76,7 @@ func loadFilters() []Filter {
 
     // #2 Opal ring
     opalRingFilter := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeFilter {
                 "Opal Ring",
@@ -102,16 +85,13 @@ func loadFilters() []Filter {
                 84,
                 GreaterThanOrEqualTo{},
             },
-            priceFilter {
-                100,
-                LessThanOrEqualTo{},
-            },
         },
     }
     filters = append(filters, opalRingFilter)
 
     // #3 Steel ring
     steelRingFilter := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeFilter {
                 "Steel Ring",
@@ -120,16 +100,13 @@ func loadFilters() []Filter {
                 84,
                 GreaterThanOrEqualTo{},
             },
-            priceFilter {
-                35,
-                LessThanOrEqualTo{},
-            },
         },
     }
     filters = append(filters, steelRingFilter)
 
     // Crystal Belt
     crystalBelt := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeFilter {
                 "Crystal Belt",
@@ -137,10 +114,6 @@ func loadFilters() []Filter {
             iLevelFilter {
                 84,
                 GreaterThanOrEqualTo{},
-            },
-            priceFilter {
-                200,
-                LessThanOrEqualTo{},
             },
             isCorruptedFilter {
                 false,
@@ -154,13 +127,10 @@ func loadFilters() []Filter {
 
     // #4 Exalted Orb
     exaFilter := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeFilter {
                 "Exalted Orb",
-            },
-            priceFilter {
-                90,
-                LessThanOrEqualTo{},
             },
         },
     }
@@ -171,13 +141,10 @@ func loadFilters() []Filter {
     
     // The Fiend
     theFiend := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeFilter {
                 "The Fiend",
-            },
-            priceFilter {
-                300,
-                LessThanOrEqualTo{},
             },
         },
     }
@@ -185,13 +152,10 @@ func loadFilters() []Filter {
 
     // The Doctor
     theDoctor := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeFilter {
                 "The Doctor",
-            },
-            priceFilter {
-                300,
-                LessThanOrEqualTo{},
             },
         },
     }
@@ -199,13 +163,10 @@ func loadFilters() []Filter {
 
     // House of Mirrors
     houseOfMirrors := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeFilter {
                 "House Of Mirrors",
-            },
-            priceFilter {
-                300,
-                LessThanOrEqualTo{},
             },
         },
     }
@@ -213,13 +174,10 @@ func loadFilters() []Filter {
 
     // The Immortal
     theImmortal := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeFilter {
                 "The Immortal",
-            },
-            priceFilter {
-                100,
-                LessThanOrEqualTo{},
             },
         },
     }
@@ -227,13 +185,10 @@ func loadFilters() []Filter {
 
     // The Queen
     theQueen := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeFilter {
                 "The Queen",
-            },
-            priceFilter {
-                50,
-                LessThanOrEqualTo{},
             },
         },
     }
@@ -241,13 +196,10 @@ func loadFilters() []Filter {
 
     // Abandoned Wealth
     abandonedWealth := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeFilter {
                 "Abandoned Wealth",
-            },
-            priceFilter {
-                40,
-                LessThanOrEqualTo{},
             },
         },
     }
@@ -255,13 +207,10 @@ func loadFilters() []Filter {
 
     // The Offering
     theOffering := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeFilter {
                 "The Offering",
-            },
-            priceFilter {
-                40,
-                LessThanOrEqualTo{},
             },
         },
     }
@@ -269,13 +218,10 @@ func loadFilters() []Filter {
 
     // The Dragon's Heart
     theDragonsHeart := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeFilter {
                 "The Dragon's Heart",
-            },
-            priceFilter {
-                35,
-                LessThanOrEqualTo{},
             },
         },
     }
@@ -283,13 +229,10 @@ func loadFilters() []Filter {
 
     // The Spark And The Flame
     theSpark := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeFilter {
                 "The Spark and the Flame",
-            },
-            priceFilter {
-                30,
-                LessThanOrEqualTo{},
             },
         },
     }
@@ -297,13 +240,10 @@ func loadFilters() []Filter {
 
     // Mawr Blaidd
     mawrBlaidd := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeFilter {
                 "Mawr Blaidd",
-            },
-            priceFilter {
-                20,
-                LessThanOrEqualTo{},
             },
         },
     }
@@ -311,13 +251,10 @@ func loadFilters() []Filter {
 
     // Wealth and Power
     wealthAndPower := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeFilter {
                 "Wealth and Power",
-            },
-            priceFilter {
-                20,
-                LessThanOrEqualTo{},
             },
         },
     }
@@ -325,13 +262,10 @@ func loadFilters() []Filter {
 
     // The Ethereal
     theEthereal := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeFilter {
                 "The Ethereal",
-            },
-            priceFilter {
-                20,
-                LessThanOrEqualTo{},
             },
         },
     }
@@ -339,13 +273,10 @@ func loadFilters() []Filter {
 
     // The Ethereal
     lastHope := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeFilter {
                 "Last Hope",
-            },
-            priceFilter {
-                10,
-                LessThanOrEqualTo{},
             },
         },
     }
@@ -353,13 +284,10 @@ func loadFilters() []Filter {
 
     // The Ethereal
     huntersReward := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeFilter {
                 "Hunter's Reward",
-            },
-            priceFilter {
-                20,
-                LessThanOrEqualTo{},
             },
         },
     }
@@ -367,13 +295,10 @@ func loadFilters() []Filter {
 
     // The Ethereal
     thePolymath := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeFilter {
                 "The Polymath",
-            },
-            priceFilter {
-                15,
-                LessThanOrEqualTo{},
             },
         },
     }
@@ -381,13 +306,10 @@ func loadFilters() []Filter {
 
     // The Ethereal
     theArtist := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeFilter {
                 "The Artist",
-            },
-            priceFilter {
-                15,
-                LessThanOrEqualTo{},
             },
         },
     }
@@ -399,13 +321,10 @@ func loadFilters() []Filter {
    
     // #6 Trash to treasure
     trashToTreasure := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeFilter {
                 "Trash To Treasure",
-            },
-            priceFilter {
-                1000,
-                LessThanOrEqualTo{},
             },
         },
     }
@@ -413,39 +332,30 @@ func loadFilters() []Filter {
    
     // Lost in the pages
     lostInPages := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeFilter {
                 "Lost in the Pages",
-            },
-            priceFilter {
-                30,
-                LessThanOrEqualTo{},
             },
         },
     }
     filters = append(filters, lostInPages)
 
     fireAndBrimstone := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeFilter {
                 "Fire and Brimstone",
-            },
-            priceFilter {
-                25,
-                LessThanOrEqualTo{},
             },
         },
     }
     filters = append(filters, fireAndBrimstone)
 
     monstrousTreasure := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeFilter {
                 "Monstrous Treasure",
-            },
-            priceFilter {
-                25,
-                LessThanOrEqualTo{},
             },
         },
     }
@@ -453,26 +363,20 @@ func loadFilters() []Filter {
 
     // Lost in the pages
     jewellersTouch := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeFilter {
                 "The Jeweller's Touch",
-            },
-            priceFilter {
-                10,
-                LessThanOrEqualTo{},
             },
         },
     }
     filters = append(filters, jewellersTouch)
 
     fatedConnections := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeFilter {
                 "Fated Connections",
-            },
-            priceFilter {
-                300,
-                LessThanOrEqualTo{},
             },
         },
     }
@@ -482,13 +386,10 @@ func loadFilters() []Filter {
     // ESSENCES
     // Delirium
     essenceDelirium := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeFilter {
                 "Essence Of Delirium",
-            },
-            priceFilter {
-                20,
-                LessThanOrEqualTo{},
             },
         },
     }
@@ -497,121 +398,95 @@ func loadFilters() []Filter {
     // Jewels
     // Red Nightmare
     theRedNightmare := Filter{
+        realValue: 0,
         []PropertyFilter {
             nameFilter {
                 "The Red Nightmare",
-            },
-            priceFilter {
-                200,
-                LessThanOrEqualTo{},
             },
         },
     }
     filters = append(filters, theRedNightmare)
     theBlueNightmare := Filter{
+        realValue: 0,
         []PropertyFilter {
             nameFilter {
                 "The Blue Nightmare",
-            },
-            priceFilter {
-                200,
-                LessThanOrEqualTo{},
             },
         },
     }
     filters = append(filters, theBlueNightmare)
     theGreenNightmare := Filter{
+        realValue: 0,
         []PropertyFilter {
             nameFilter {
                 "The Green Nightmare",
-            },
-            priceFilter {
-                200,
-                LessThanOrEqualTo{},
             },
         },
     }
     filters = append(filters, theGreenNightmare)
 
     theAnimaStone := Filter{
+        realValue: 0,
         []PropertyFilter {
             nameFilter {
                 "The Anima Stone",
-            },
-            priceFilter {
-                200,
-                LessThanOrEqualTo{},
             },
         },
     }
     filters = append(filters, theAnimaStone)
    
     primordialMight := Filter{
+        realValue: 0,
         []PropertyFilter {
             nameFilter {
                 "Primordial Might",
-            },
-            priceFilter {
-                200,
-                LessThanOrEqualTo{},
             },
         },
     }
     filters = append(filters, primordialMight)
 
     energyFromWithin := Filter{
+        realValue: 0,
         []PropertyFilter {
             nameFilter {
                 "Energy From Within",
-            },
-            priceFilter {
-                150,
-                LessThanOrEqualTo{},
             },
         },
     }
     filters = append(filters, energyFromWithin)
 
     theRedDream := Filter{
+        realValue: 0,
         []PropertyFilter {
             nameFilter {
                 "The Red Dream",
-            },
-            priceFilter {
-                100,
-                LessThanOrEqualTo{},
             },
         },
     }
     filters = append(filters, theRedDream)
 
     theBlueDream := Filter{
+        realValue: 0,
         []PropertyFilter {
             nameFilter {
                 "The Blue Dream",
-            },
-            priceFilter {
-                80,
-                LessThanOrEqualTo{},
             },
         },
     }
     filters = append(filters, theBlueDream)
 
     theGreenDream := Filter{
+        realValue: 0,
         []PropertyFilter {
             nameFilter {
                 "The Green Dream",
-            },
-            priceFilter {
-                25,
-                LessThanOrEqualTo{},
             },
         },
     }
     filters = append(filters, theGreenDream)
 
     grandSpectrum := Filter{
+        realValue: 0,
         []PropertyFilter {
             nameFilter {
                 "Grand Spectrum",
@@ -619,127 +494,96 @@ func loadFilters() []Filter {
             typeFilter {
                 "Viridian Jewel",
             },
-            priceFilter {
-                20,
-                LessThanOrEqualTo{},
-            },
         },
     }
     filters = append(filters, grandSpectrum)
 
     // Uniques
     bereksRespite := Filter{
+        realValue: 0,
         []PropertyFilter {
             nameFilter {
                 "Berek's Respite",
-            },
-            priceFilter {
-                50,
-                LessThanOrEqualTo{},
             },
         },
     }
     filters = append(filters, bereksRespite)
 
     shavronnesRevelation := Filter{
+        realValue: 0,
         []PropertyFilter {
             nameFilter {
                 "Shavronne's Revelation",
-            },
-            priceFilter {
-                100,
-                LessThanOrEqualTo{},
             },
         },
     }
     filters = append(filters, shavronnesRevelation)
 
     vollsDevotion := Filter{
+        realValue: 0,
         []PropertyFilter {
             nameFilter {
                 "Voll's Devotion",
-            },
-            priceFilter {
-                50,
-                LessThanOrEqualTo{},
             },
         },
     }
     filters = append(filters, vollsDevotion)
 
     astramentis := Filter{
+        realValue: 0,
         []PropertyFilter {
             nameFilter {
                 "Astramentis",
-            },
-            priceFilter {
-                50,
-                LessThanOrEqualTo{},
             },
         },
     }
     filters = append(filters, astramentis)
    
     headhunter := Filter{
+        realValue: 0,
         []PropertyFilter {
             nameFilter {
                 "Headhunter",
-            },
-            priceFilter {
-                300,
-                LessThanOrEqualTo{},
             },
         },
     }
     filters = append(filters, headhunter)
 
     kiaras := Filter{
+        realValue: 0,
         []PropertyFilter {
             nameFilter {
                 "Kiara's Determination",
-            },
-            priceFilter {
-                95,
-                LessThanOrEqualTo{},
             },
         },
     }
     filters = append(filters, kiaras)
 
     skyforth := Filter{
+        realValue: 0,
         []PropertyFilter {
             nameFilter {
                 "Skyforth",
-            },
-            priceFilter {
-                300,
-                LessThanOrEqualTo{},
             },
         },
     }
     filters = append(filters, skyforth)
 
     shavs := Filter{
+        realValue: 0,
         []PropertyFilter {
             nameFilter {
                 "Shavronne's Wrappings",
-            },
-            priceFilter {
-                300,
-                LessThanOrEqualTo{},
             },
         },
     }
     filters = append(filters, shavs)
 
     tukohamas := Filter{
+        realValue: 0,
         []PropertyFilter {
             nameFilter {
                 "Tukohama's Fortress",
-            },
-            priceFilter {
-                200,
-                LessThanOrEqualTo{},
             },
         },
     }
@@ -747,13 +591,10 @@ func loadFilters() []Filter {
 
     // Gems
     enlighten := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeFilter {
                 "Enlighten Support",
-            },
-            priceFilter {
-                6,
-                LessThanOrEqualTo{},
             },
         },
     }
@@ -761,6 +602,7 @@ func loadFilters() []Filter {
 
     // Leagestones
     cartosLeaguestone := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeHasPrefixFilter {
                 "Cartographer's Ambush Leaguestone",
@@ -769,16 +611,13 @@ func loadFilters() []Filter {
                 69,
                 GreaterThanOrEqualTo{},
             },
-            priceFilter {
-                60,
-                LessThanOrEqualTo{},
-            },
         },
     }
     filters = append(filters, cartosLeaguestone)
 
     // Leagestones
     singularAmbushLeaguestone := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeHasPrefixFilter {
                 "Singular Ambush Leaguestone",
@@ -787,16 +626,13 @@ func loadFilters() []Filter {
                 69,
                 GreaterThanOrEqualTo{},
             },
-            priceFilter {
-                5,
-                LessThanOrEqualTo{},
-            },
         },
     }
     filters = append(filters, singularAmbushLeaguestone)
 
     // Leagestones
     singularPerandusLeaguestone := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeHasPrefixFilter {
                 "Singular Perandus Leaguestone",
@@ -805,16 +641,13 @@ func loadFilters() []Filter {
                 69,
                 GreaterThanOrEqualTo{},
             },
-            priceFilter {
-                90,
-                LessThanOrEqualTo{},
-            },
         },
     }
     filters = append(filters, singularPerandusLeaguestone)
 
     // Leagestones
     cartosPerandusLeaguestone := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeHasPrefixFilter {
                 "Cartographer's Perandus Leaguestone",
@@ -823,16 +656,13 @@ func loadFilters() []Filter {
                 69,
                 GreaterThanOrEqualTo{},
             },
-            priceFilter {
-                90,
-                LessThanOrEqualTo{},
-            },
         },
     }
     filters = append(filters, cartosPerandusLeaguestone)
 
     // Leagestones
     chayulaLeaguestone := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeHasSuffixFilter {
                 "Breach Leaguestone of Dreaming",
@@ -841,16 +671,13 @@ func loadFilters() []Filter {
                 69,
                 GreaterThanOrEqualTo{},
             },
-            priceFilter {
-                50,
-                LessThanOrEqualTo{},
-            },
         },
     }
     filters = append(filters, chayulaLeaguestone)
 
     // Leagestones
     plentifulBreachLeaguestone := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeHasPrefixFilter {
                 "Plentiful Breach Leaguestone of Splinters",
@@ -859,16 +686,13 @@ func loadFilters() []Filter {
                 69,
                 GreaterThanOrEqualTo{},
             },
-            priceFilter {
-                15,
-                LessThanOrEqualTo{},
-            },
         },
     }
     filters = append(filters, plentifulBreachLeaguestone)
 
     // Leagestones
     endbringingLeaguestone := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeHasPrefixFilter {
                 "Endbringing Beyond Leaguestone",
@@ -877,16 +701,13 @@ func loadFilters() []Filter {
                 69,
                 GreaterThanOrEqualTo{},
             },
-            priceFilter {
-                20,
-                LessThanOrEqualTo{},
-            },
         },
     }
     filters = append(filters, endbringingLeaguestone)
 
     // Leagestones
     terrorLeaguestone := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeHasPrefixFilter {
                 "Talisman Leaguestone of Terror",
@@ -895,15 +716,12 @@ func loadFilters() []Filter {
                 69,
                 GreaterThanOrEqualTo{},
             },
-            priceFilter {
-                20,
-                LessThanOrEqualTo{},
-            },
         },
     }
     filters = append(filters, terrorLeaguestone)
 
     deliriousLeaguestone := Filter{
+        realValue: 0,
         []PropertyFilter {
             typeHasPrefixFilter {
                 "Delirious Essence Leaguestone",
@@ -911,10 +729,6 @@ func loadFilters() []Filter {
             iLevelFilter {
                 69,
                 GreaterThanOrEqualTo{},
-            },
-            priceFilter {
-                40,
-                LessThanOrEqualTo{},
             },
         },
     }
