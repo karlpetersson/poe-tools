@@ -14,9 +14,6 @@ import (
 	"github.com/fatih/color"
 )
 
-var logFile *File
-var writer *Writer
-
 func getRecentCurrencyRatios() (string, error) {
 	return "", nil
 }
@@ -62,10 +59,6 @@ func handleMatch(item api.Item, stash *api.Stash) {
 	}
 }
 
-func logMatch(item api.Item, stash *api.Stash, int price, int realPrice) {
-	err := writer.Write("%v,%v,%v", item.Name, item.Type, price, realPrice)
-}
-
 // This is where we look through stashes for items of interest. For this example, we'll just log
 // reliquary key activity. You might want to parse buyouts, play sounds, compose messages that you
 // can send in whispers, etc.
@@ -99,13 +92,6 @@ func main() {
 	log.Printf("starting with change id %v", recentChangeId)
 	log.Printf("requesting current currency ratios from poe.ninja...")
 
-	// open file for logging
-    file, err = os.Create("dataLol.csv")
-    checkError("Cannot create file", err)
-    defer file.Close()
-    writer := csv.NewWriter(file)
-    defer writer.Flush()
-
 	/*currencyConvertionTable, err := getRecentCurrencyRatios()
 	if err != nil {
 		log.Printf("Could not get current ratios, using default")
@@ -124,7 +110,7 @@ func main() {
 		subscription.Close()
 	}()
 
-	filters := loadDataFilters()
+	filters := loadFilters()
 
 	log.Printf("num filters: %v", len(filters))
 

@@ -24,6 +24,20 @@ func loadFilters() []Filter {
     }
     filters = append(filters, eyeOfChayula)
 
+    // The Queen
+    theQueen := Filter{
+        []PropertyFilter {
+            typeFilter {
+                "The Queen",
+            },
+            priceFilter {
+                60,
+                LessThanOrEqualTo{},
+            },
+        },
+    }
+    filters = append(filters, theQueen)
+
     theEnlightened := Filter{
         []PropertyFilter {
             typeFilter {
@@ -225,20 +239,6 @@ func loadFilters() []Filter {
     }
     filters = append(filters, theImmortal)
 
-    // The Queen
-    theQueen := Filter{
-        []PropertyFilter {
-            typeFilter {
-                "The Queen",
-            },
-            priceFilter {
-                50,
-                LessThanOrEqualTo{},
-            },
-        },
-    }
-    filters = append(filters, theQueen)
-
     // Abandoned Wealth
     abandonedWealth := Filter{
         []PropertyFilter {
@@ -260,7 +260,7 @@ func loadFilters() []Filter {
                 "The Offering",
             },
             priceFilter {
-                40,
+                45,
                 LessThanOrEqualTo{},
             },
         },
@@ -565,7 +565,7 @@ func loadFilters() []Filter {
                 "Energy From Within",
             },
             priceFilter {
-                150,
+                190,
                 LessThanOrEqualTo{},
             },
         },
@@ -620,7 +620,7 @@ func loadFilters() []Filter {
                 "Viridian Jewel",
             },
             priceFilter {
-                20,
+                25,
                 LessThanOrEqualTo{},
             },
         },
@@ -752,7 +752,7 @@ func loadFilters() []Filter {
                 "Enlighten Support",
             },
             priceFilter {
-                6,
+                7,
                 LessThanOrEqualTo{},
             },
         },
