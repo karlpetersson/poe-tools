@@ -17,12 +17,54 @@ func loadFilters() []Filter {
                 false,
             },
             priceFilter {
-                6,
+                5,
                 LessThanOrEqualTo{},
             },
         },
     }
     filters = append(filters, eyeOfChayula)
+
+    // fun stuff 
+    deafeningEssenceOfWrath := Filter {
+        []PropertyFilter {
+            typeFilter {
+                "Deafening Essence of Wrath",
+            },
+            priceFilter {
+                7,
+                LessThanOrEqualTo{},
+            },
+        },
+    }
+    filters = append(filters, deafeningEssenceOfWrath)
+
+    deafeningEssenceOfSpite := Filter {
+        []PropertyFilter {
+            typeFilter {
+                "Deafening Essence of Spite",
+            },
+            priceFilter {
+                10,
+                LessThanOrEqualTo{},
+            },
+        },
+    }
+    filters = append(filters, deafeningEssenceOfSpite)
+
+    shriekingSpite := Filter {
+        []PropertyFilter {
+            typeFilter {
+                "Shrieking Essence of Spite",
+            },
+            priceFilter {
+                6,
+                LessThanOrEqualTo{},
+            },
+        },
+    }
+    filters = append(filters, shriekingSpite)
+
+
 
     // The Queen
     theQueen := Filter{
@@ -99,7 +141,7 @@ func loadFilters() []Filter {
                 "Ancient Reliquary Key",
             },
             priceFilter {
-                55,
+                50,
                 LessThanOrEqualTo{},
             },
         },
@@ -117,7 +159,7 @@ func loadFilters() []Filter {
                 GreaterThanOrEqualTo{},
             },
             priceFilter {
-                100,
+                85,
                 LessThanOrEqualTo{},
             },
         },
@@ -135,7 +177,7 @@ func loadFilters() []Filter {
                 GreaterThanOrEqualTo{},
             },
             priceFilter {
-                35,
+                30,
                 LessThanOrEqualTo{},
             },
         },
@@ -752,7 +794,7 @@ func loadFilters() []Filter {
                 "Enlighten Support",
             },
             priceFilter {
-                7,
+                5,
                 LessThanOrEqualTo{},
             },
         },
