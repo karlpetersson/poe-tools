@@ -2,7 +2,7 @@ package main
 
 var defaultConversionTable = map[string]float64{
     "chaos": 1,
-    "exa": 105,
+    "exa": 90,
     "divine": 14,
     "master-sextant": 5.0,
     "journeyman-sextant": 3.0,

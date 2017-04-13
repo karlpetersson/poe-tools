@@ -7,6 +7,31 @@ import (
 func loadFilters() []Filter {
     filters := make([]Filter, 0)
 
+    // expensive stuff
+    vesselOfVinktar := Filter {
+        []PropertyFilter {
+            nameFilter {
+                "Vessel of Vinktar",
+            },
+            hasExplicitMod {
+                LeechAppliesInstantlyFlask,
+                true,
+            },
+        },
+    }
+    filters = append(filters, vesselOfVinktar)
+
+    testExplicit := Filter {
+        []PropertyFilter {
+            explicitModValueFilter {
+                AddsDexterity,
+                40,
+                GreaterThanOrEqualTo{},
+            },
+        },
+    }
+    filters = append(filters, testExplicit)
+
     // fun stuff 
     eyeOfChayula := Filter {
         []PropertyFilter {
@@ -215,7 +240,7 @@ func loadFilters() []Filter {
                 "Exalted Orb",
             },
             priceFilter {
-                90,
+                70,
                 LessThanOrEqualTo{},
             },
         },
