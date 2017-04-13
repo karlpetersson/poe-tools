@@ -2,13 +2,13 @@ package main
 
 var defaultConversionTable = map[string]float64{
     "chaos": 1,
-    "exa": 90,
+    "exa": 84,
     "divine": 14,
     "master-sextant": 5.0,
     "journeyman-sextant": 3.0,
     "apprentice-sextant": 1.0,
-    "gcp": 1.1,
-    "regret": 1.1,
+    "gcp": 1.0,
+    "regret": 1.4,
     "regal": 0.88,
     "scour": 0.8,
     "vaal": 0.65,

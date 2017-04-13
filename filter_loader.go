@@ -21,18 +21,7 @@ func loadFilters() []Filter {
     }
     filters = append(filters, vesselOfVinktar)
 
-    testExplicit := Filter {
-        []PropertyFilter {
-            explicitModValueFilter {
-                AddsDexterity,
-                40,
-                GreaterThanOrEqualTo{},
-            },
-        },
-    }
-    filters = append(filters, testExplicit)
-
-    // fun stuff 
+    // PRICEFIX THESE 
     eyeOfChayula := Filter {
         []PropertyFilter {
             nameFilter {
@@ -48,6 +37,48 @@ func loadFilters() []Filter {
         },
     }
     filters = append(filters, eyeOfChayula)
+
+    // The Queen
+    theQueen := Filter{
+        []PropertyFilter {
+            typeFilter {
+                "The Queen",
+            },
+            priceFilter {
+                55,
+                LessThanOrEqualTo{},
+            },
+        },
+    }
+    filters = append(filters, theQueen)
+
+    // The Immortal
+    theImmortal := Filter{
+        []PropertyFilter {
+            typeFilter {
+                "The Immortal",
+            },
+            priceFilter {
+                80,
+                LessThanOrEqualTo{},
+            },
+        },
+    }
+    filters = append(filters, theImmortal)
+
+    // The Offering
+    theOffering := Filter{
+        []PropertyFilter {
+            typeFilter {
+                "The Offering",
+            },
+            priceFilter {
+                30,
+                LessThanOrEqualTo{},
+            },
+        },
+    }
+    filters = append(filters, theOffering)
 
     // fun stuff 
     deafeningEssenceOfWrath := Filter {
@@ -82,28 +113,13 @@ func loadFilters() []Filter {
                 "Shrieking Essence of Spite",
             },
             priceFilter {
-                6,
+                5,
                 LessThanOrEqualTo{},
             },
         },
     }
     filters = append(filters, shriekingSpite)
 
-
-
-    // The Queen
-    theQueen := Filter{
-        []PropertyFilter {
-            typeFilter {
-                "The Queen",
-            },
-            priceFilter {
-                60,
-                LessThanOrEqualTo{},
-            },
-        },
-    }
-    filters = append(filters, theQueen)
 
     theEnlightened := Filter{
         []PropertyFilter {
@@ -220,7 +236,7 @@ func loadFilters() []Filter {
                 GreaterThanOrEqualTo{},
             },
             priceFilter {
-                200,
+                500,
                 LessThanOrEqualTo{},
             },
             isCorruptedFilter {
@@ -237,10 +253,10 @@ func loadFilters() []Filter {
     exaFilter := Filter{
         []PropertyFilter {
             typeFilter {
-                "Exalted Orb",
+                "Exaltdepoe Orb",
             },
             priceFilter {
-                70,
+                50,
                 LessThanOrEqualTo{},
             },
         },
@@ -257,7 +273,7 @@ func loadFilters() []Filter {
                 "The Fiend",
             },
             priceFilter {
-                300,
+                500,
                 LessThanOrEqualTo{},
             },
         },
@@ -271,7 +287,7 @@ func loadFilters() []Filter {
                 "The Doctor",
             },
             priceFilter {
-                300,
+                700,
                 LessThanOrEqualTo{},
             },
         },
@@ -285,26 +301,13 @@ func loadFilters() []Filter {
                 "House Of Mirrors",
             },
             priceFilter {
-                300,
+                750,
                 LessThanOrEqualTo{},
             },
         },
     }
     filters = append(filters, houseOfMirrors)
 
-    // The Immortal
-    theImmortal := Filter{
-        []PropertyFilter {
-            typeFilter {
-                "The Immortal",
-            },
-            priceFilter {
-                100,
-                LessThanOrEqualTo{},
-            },
-        },
-    }
-    filters = append(filters, theImmortal)
 
     // Abandoned Wealth
     abandonedWealth := Filter{
@@ -313,7 +316,7 @@ func loadFilters() []Filter {
                 "Abandoned Wealth",
             },
             priceFilter {
-                40,
+                35,
                 LessThanOrEqualTo{},
             },
         },
@@ -327,7 +330,7 @@ func loadFilters() []Filter {
                 "The Offering",
             },
             priceFilter {
-                45,
+                35,
                 LessThanOrEqualTo{},
             },
         },
@@ -341,7 +344,7 @@ func loadFilters() []Filter {
                 "The Dragon's Heart",
             },
             priceFilter {
-                35,
+                30,
                 LessThanOrEqualTo{},
             },
         },
@@ -355,7 +358,7 @@ func loadFilters() []Filter {
                 "The Spark and the Flame",
             },
             priceFilter {
-                30,
+                25,
                 LessThanOrEqualTo{},
             },
         },
@@ -369,7 +372,7 @@ func loadFilters() []Filter {
                 "Mawr Blaidd",
             },
             priceFilter {
-                20,
+                15,
                 LessThanOrEqualTo{},
             },
         },
@@ -471,7 +474,7 @@ func loadFilters() []Filter {
                 "Trash To Treasure",
             },
             priceFilter {
-                1000,
+                4000,
                 LessThanOrEqualTo{},
             },
         },
@@ -485,7 +488,7 @@ func loadFilters() []Filter {
                 "Lost in the Pages",
             },
             priceFilter {
-                30,
+                40,
                 LessThanOrEqualTo{},
             },
         },
@@ -511,7 +514,7 @@ func loadFilters() []Filter {
                 "Monstrous Treasure",
             },
             priceFilter {
-                25,
+                30,
                 LessThanOrEqualTo{},
             },
         },
@@ -525,7 +528,7 @@ func loadFilters() []Filter {
                 "The Jeweller's Touch",
             },
             priceFilter {
-                10,
+                9,
                 LessThanOrEqualTo{},
             },
         },
@@ -538,7 +541,7 @@ func loadFilters() []Filter {
                 "Fated Connections",
             },
             priceFilter {
-                300,
+                500,
                 LessThanOrEqualTo{},
             },
         },
@@ -569,7 +572,7 @@ func loadFilters() []Filter {
                 "The Red Nightmare",
             },
             priceFilter {
-                200,
+                300,
                 LessThanOrEqualTo{},
             },
         },
@@ -581,7 +584,7 @@ func loadFilters() []Filter {
                 "The Blue Nightmare",
             },
             priceFilter {
-                200,
+                300,
                 LessThanOrEqualTo{},
             },
         },
@@ -593,7 +596,7 @@ func loadFilters() []Filter {
                 "The Green Nightmare",
             },
             priceFilter {
-                200,
+                220,
                 LessThanOrEqualTo{},
             },
         },
@@ -606,7 +609,7 @@ func loadFilters() []Filter {
                 "The Anima Stone",
             },
             priceFilter {
-                200,
+                230,
                 LessThanOrEqualTo{},
             },
         },
@@ -632,7 +635,7 @@ func loadFilters() []Filter {
                 "Energy From Within",
             },
             priceFilter {
-                190,
+                130,
                 LessThanOrEqualTo{},
             },
         },
@@ -645,7 +648,7 @@ func loadFilters() []Filter {
                 "The Red Dream",
             },
             priceFilter {
-                100,
+                90,
                 LessThanOrEqualTo{},
             },
         },
@@ -658,7 +661,7 @@ func loadFilters() []Filter {
                 "The Blue Dream",
             },
             priceFilter {
-                80,
+                75,
                 LessThanOrEqualTo{},
             },
         },
@@ -714,7 +717,7 @@ func loadFilters() []Filter {
                 "Shavronne's Revelation",
             },
             priceFilter {
-                100,
+                140,
                 LessThanOrEqualTo{},
             },
         },
@@ -727,7 +730,7 @@ func loadFilters() []Filter {
                 "Voll's Devotion",
             },
             priceFilter {
-                50,
+                45,
                 LessThanOrEqualTo{},
             },
         },
@@ -740,7 +743,7 @@ func loadFilters() []Filter {
                 "Astramentis",
             },
             priceFilter {
-                50,
+                40,
                 LessThanOrEqualTo{},
             },
         },
@@ -753,7 +756,7 @@ func loadFilters() []Filter {
                 "Headhunter",
             },
             priceFilter {
-                300,
+                2200,
                 LessThanOrEqualTo{},
             },
         },
@@ -766,7 +769,7 @@ func loadFilters() []Filter {
                 "Kiara's Determination",
             },
             priceFilter {
-                95,
+                80,
                 LessThanOrEqualTo{},
             },
         },
@@ -779,7 +782,7 @@ func loadFilters() []Filter {
                 "Skyforth",
             },
             priceFilter {
-                300,
+                2200,
                 LessThanOrEqualTo{},
             },
         },
@@ -792,7 +795,7 @@ func loadFilters() []Filter {
                 "Shavronne's Wrappings",
             },
             priceFilter {
-                300,
+                350,
                 LessThanOrEqualTo{},
             },
         },
@@ -805,7 +808,7 @@ func loadFilters() []Filter {
                 "Tukohama's Fortress",
             },
             priceFilter {
-                200,
+                350,
                 LessThanOrEqualTo{},
             },
         },
