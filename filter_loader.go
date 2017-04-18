@@ -7,6 +7,74 @@ import (
 func loadFilters() []Filter {
     filters := make([]Filter, 0)
 
+    test := Filter {
+        []PropertyFilter {
+            nameFilter {
+                "Eye of Chayula",
+            },
+            hasImplicitMod {
+                MoreFrenzyCharges,
+                true,
+            },
+            priceFilter {
+                5,
+                LessThanOrEqualTo{},
+            },
+        },
+    }
+    filters = append(filters, test)
+
+    test2 := Filter {
+        []PropertyFilter {
+            nameFilter {
+                "Eye of Chayula",
+            },
+            hasImplicitMod {
+                AdditionalCurse,
+                true,
+            },
+            priceFilter {
+                500,
+                LessThanOrEqualTo{},
+            },
+        },
+    }
+    filters = append(filters, test2)
+
+    test3 := Filter {
+        []PropertyFilter {
+            nameFilter {
+                "Bisco's Collar",
+            },
+            hasImplicitMod {
+                MoreFrenzyCharges,
+                true,
+            },
+            priceFilter {
+                75,
+                LessThanOrEqualTo{},
+            },
+        },
+    }
+    filters = append(filters, test3)
+
+    test4 := Filter {
+        []PropertyFilter {
+            nameFilter {
+                "Bisco's Collar",
+            },
+            hasImplicitMod {
+                AdditionalCurse,
+                true,
+            },
+            priceFilter {
+                500,
+                LessThanOrEqualTo{},
+            },
+        },
+    }
+    filters = append(filters, test4)
+
     // expensive stuff
     vesselOfVinktar := Filter {
         []PropertyFilter {
@@ -323,19 +391,6 @@ func loadFilters() []Filter {
     }
     filters = append(filters, abandonedWealth)
 
-    // The Offering
-    theOffering := Filter{
-        []PropertyFilter {
-            typeFilter {
-                "The Offering",
-            },
-            priceFilter {
-                35,
-                LessThanOrEqualTo{},
-            },
-        },
-    }
-    filters = append(filters, theOffering)
 
     // The Dragon's Heart
     theDragonsHeart := Filter{

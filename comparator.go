@@ -14,48 +14,10 @@ var altPriceRegexp = regexp.MustCompile(`~price (?P<Amount>\d{1,4}) (?P<Type>[a-
 type PropertyFilter interface {
     compare(item api.Item) bool
 }
-/*
-type propIncChargesUsed struct {
-    IntComparator compare
-}
-
-type Property interface {
-    eval(item api.Item) bool
-}
-
-type numValuePropFilter struct {
-    Prop Property
-}*/
-
-type ModType int
-const (
-    HasNoSockets ModType = iota
-    IncreasedFlaskChargesUsed
-    PlusToLevelOfSocketedSupportGems
-    AddsDexterity
-    LeechAppliesInstantlyFlask
-)
 
 type hasExplicitMod struct {
     Type ModType
     Value bool
-}
-
-func getPropStr(t ModType) string {
-    switch t {
-        case IncreasedFlaskChargesUsed: 
-            return `(?P<Amount>\d{1,2})\% increased Charges used`
-        case PlusToLevelOfSocketedSupportGems:
-            return `\+(?P<Amount>\d{1}) to level of Socketed Support Gems`
-        case AddsDexterity:
-            return `\+(?P<Amount>\d{1,3}) to Dexterity`
-        case HasNoSockets:
-            return `Has no Sockets`
-        case LeechAppliesInstantlyFlask:
-            return `Leech applies instantly during Flask effect`
-        default:
-            return "Unknown property"
-    }
 }
 
 func (p hasExplicitMod) compare(item api.Item) bool {
@@ -103,21 +65,24 @@ func (p explicitModValueFilter) compare(item api.Item) bool {
     return false
 }
 
-/*func propTypeToStr(t PropType) string {
-    regexp := regexp.MustCompile(getPropStr(t))
-    
-    match := regexp.FindStringSubmatch(item.Note)
-    if match == nil {
+type hasImplicitMod struct {
+    Type ModType
+    Value bool
 }
 
-func (p numValuePropFilter) compare(item api.Item) bool {
-    propStr = propTypeToStr
-    for prop, _ := range item.Properties {
-        if prop.Name == p.name {
-            if p.Comparator(p.Value, prop.Values[0])
+func (p hasImplicitMod) compare(item api.Item) bool {
+    regexp := regexp.MustCompile(getPropStr(p.Type))
+    
+    for _, mod := range item.ImplicitMods {
+        match := regexp.FindStringSubmatch(mod)
+        hasMod := (match != nil)
+        if p.Value == hasMod {
+            return true
         } 
     }
-}*/
+
+    return false
+}
 
 type nameFilter struct {
     Value string
