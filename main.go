@@ -8,6 +8,9 @@ import (
 	"os"
 	"os/signal"
 	"runtime"
+	"poe-indexer/notifications"
+	"poe-indexer/core"
+	"poe-indexer/ninja"
 
 	"github.com/ccbrown/poe-go/api"
 	"github.com/atotto/clipboard"
@@ -47,7 +50,7 @@ func handleMatch(item api.Item, stash *api.Stash) {
 	color.White(msg)
 	
 	if runtime.GOOS == "windows" {
-		playNotification()
+		notifications.Play()
 	}
 
 	if err := clipboard.WriteAll(msg); err != nil {
@@ -58,14 +61,14 @@ func handleMatch(item api.Item, stash *api.Stash) {
 // This is where we look through stashes for items of interest. For this example, we'll just log
 // reliquary key activity. You might want to parse buyouts, play sounds, compose messages that you
 // can send in whispers, etc.
-func processStash(stash *api.Stash, filters []Filter) {
+func processStash(stash *api.Stash, filters []core.Filter) {
 	for _, item := range stash.Items {
 		if item.League != "Legacy" {
 			continue
 		}
 
 		for _, filter := range filters {
-			if filter.match(item) {
+			if filter.Enabled && filter.Match(item) {
 				handleMatch(item, stash)
 			}
 		}
@@ -77,7 +80,7 @@ func main() {
 	//c := startSocketServer()
 	//go socketPush(c)
 	if runtime.GOOS == "windows" {
-		initSound()
+		notifications.Init()
 	}
 	
 	log.Printf("requesting a recent change id from poe.ninja...")
@@ -87,7 +90,7 @@ func main() {
 	}
 	log.Printf("starting with change id %v", recentChangeId)
 	
-	fetchCurrencyRatios()
+	ninja.FetchCurrencyRatios()
 
 	subscription := api.OpenPublicStashTabSubscription(recentChangeId)
 
