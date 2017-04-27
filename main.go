@@ -11,11 +11,15 @@ import (
 	"poe-indexer/notifications"
 	"poe-indexer/core"
 	"poe-indexer/ninja"
+	"time"
 
 	"github.com/ccbrown/poe-go/api"
 	"github.com/atotto/clipboard"
 	"github.com/fatih/color"
 )
+
+var pTot = 0.0
+var pNum = 0
 
 // To begin receiving newly updated items immediately, we need to get a recent change id. poe.ninja
 // can provide us with that.
@@ -62,6 +66,7 @@ func handleMatch(item api.Item, stash *api.Stash) {
 // reliquary key activity. You might want to parse buyouts, play sounds, compose messages that you
 // can send in whispers, etc.
 func processStash(stash *api.Stash, filters []core.Filter) {
+	defer un(trace("num"))
 	for _, item := range stash.Items {
 		if item.League != "Legacy" {
 			continue
@@ -73,6 +78,18 @@ func processStash(stash *api.Stash, filters []core.Filter) {
 			}
 		}
 	}
+}
+
+func trace(s string) (string, time.Time) {
+	//log.Println("")
+	return s, time.Now()
+}
+
+func un(s string, startTime time.Time) {
+	endTime := time.Now()
+	log.Println("Stash parse", s, "completed in:", endTime.Sub(startTime))
+	pTot += endTime.Sub(startTime).Seconds()
+	pNum += 1
 }
 
 func main() {
@@ -100,6 +117,7 @@ func main() {
 		signal.Notify(ch, os.Interrupt)
 		<-ch
 		log.Printf("shutting down")
+		log.Printf("mean(ms) = %v", (pTot*1000.0)/float64(pNum))
 		subscription.Close()
 	}()
 
