@@ -85,6 +85,19 @@ func (p hasImplicitMod) compare(item api.Item) bool {
     return false
 }
 
+type filterOr struct {
+    filters []PropertyFilter
+}
+
+func (f filterOr) compare(item api.Item) bool {
+    for _, filter := range f.filters {
+        if filter.compare(item) {
+            return true
+        }
+    }
+    return false
+}
+
 type nameFilter struct {
     Value string
 }
@@ -99,6 +112,14 @@ type typeFilter struct {
 
 func (f typeFilter) compare(item api.Item) bool {
     return item.Type == f.Value
+}
+
+type baseTypeFilter struct {
+    Type BaseType
+}
+
+func (f baseTypeFilter) compare(item api.Item) bool {
+    return f.Type.parseType(item.Type)
 }
 
 type iLevelFilter struct {
@@ -185,4 +206,18 @@ type typeHasSuffixFilter struct {
 
 func (f typeHasSuffixFilter) compare(item api.Item) bool {
     return strings.HasSuffix(item.Type, f.Value)
+}
+
+type sixLinkedFilter struct {}
+
+func (f sixLinkedFilter) compare(item api.Item) bool {
+    if len(item.Sockets) == 6 && 
+    (item.Sockets[0].GroupId == item.Sockets[1].GroupId) &&
+    (item.Sockets[0].GroupId == item.Sockets[2].GroupId) &&
+    (item.Sockets[0].GroupId == item.Sockets[3].GroupId) &&
+    (item.Sockets[0].GroupId == item.Sockets[4].GroupId) &&
+    (item.Sockets[0].GroupId == item.Sockets[5].GroupId) {
+        return true
+    }
+    return false
 }

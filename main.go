@@ -66,7 +66,7 @@ func handleMatch(item api.Item, stash *api.Stash) {
 // reliquary key activity. You might want to parse buyouts, play sounds, compose messages that you
 // can send in whispers, etc.
 func processStash(stash *api.Stash, filters []core.Filter) {
-	defer un(trace("num"))
+	//defer un(trace("num"))
 	for _, item := range stash.Items {
 		if item.League != "Legacy" {
 			continue

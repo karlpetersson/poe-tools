@@ -1,6 +1,6 @@
 package core
 
-func GetOtherFilters() []Filter {
+func GetOther2Filters() []Filter {
     /*prices := map[string]int {
         true,
         "fiend": 500,

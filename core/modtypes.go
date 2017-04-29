@@ -9,6 +9,8 @@ const (
     LeechAppliesInstantlyFlask
     MoreFrenzyCharges
     AdditionalCurse
+    MoreEnduranceCharges
+    PlusToLevelOfSocketedGems
 )
 
 func getPropStr(t ModType) string {
@@ -27,6 +29,10 @@ func getPropStr(t ModType) string {
             return `\+1 to Maximum Frenzy Charges`
         case AdditionalCurse:
             return `Enemies can have 1 additional Curse`
+        case MoreEnduranceCharges:
+            return `\+1 to Maximum Endurance Charges`
+        case PlusToLevelOfSocketedGems:
+            return `\+(?P<Amount>\d{1}) to level of Socketed Gems`
         default:
             return "Unknown property"
     }
