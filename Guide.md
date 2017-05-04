@@ -10,6 +10,16 @@ Fireball?
 
 ## GMGP
 List methods for $
+
+### Wierd stuff with recipes
+Buy cheap ilvl84 auxium, vaal into rares and sell 5 -> 1
+Buy cheap items with only 2 affix -> sell for scour?
+Lvl 20 gem + 1 gcp -> 20% quality lvl 1 gem
+Primordial might + harmony + eminence = anima stone (can pricefix these)
+Feastbind(40c) + Faminebind(40c) + fuse = The Retch(100c)
+Ruby ring (any rarity) + unique gold amu + crim. jew with silence immune -> star of wraeclast
+
+
 ### Snipe filters
 ```
 items

@@ -6,22 +6,22 @@ func GetBasesFilters() []Filter {
         "i84OpalRing": { 90, true },
         "i84SteelRing": { 30, true },
         
-        "i84VaalRegalia": { 5, true },
-        "i84HubrisCirclet": { 5, true },
-        "i84SorcererGloves": { 5, true },
-        "i84SorcererBoots": { 5, true },
-        "i84VanguardBelt": { 5, true },
+        "i84VaalRegalia": { 5, false },
+        "i84HubrisCirclet": { 5, false },
+        "i84SorcererGloves": { 5, false },
+        "i84SorcererBoots": { 5, false },
+        "i84VanguardBelt": { 5, false },
 
         // low tier
-        "i81OpalRing": { 10, true },
-        "i81SteelRing": { 10, true },
-        "i81CrystalBelt": { 10, true },
+        "i81OpalRing": { 10, false },
+        "i81SteelRing": { 10, false },
+        "i81CrystalBelt": { 10, false },
         
         // super low tier
-        "i78DiamondRing": { 1, true },
-        "i78HarbingerBow": { 1, true },
-        "i78VaalRegalia": { 1, true },
-        "i78HubrisCirclet": { 1, true },
+        "i78DiamondRing": { 1, false },
+        "i78HarbingerBow": { 1, false },
+        "i78VaalRegalia": { 1, false },
+        "i78HubrisCirclet": { 1, false },
     }
 
     filters := make([]Filter, 0)

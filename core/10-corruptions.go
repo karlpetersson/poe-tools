@@ -1,6 +1,6 @@
 package core
 
-func GetVaalFilters() []Filter {
+func GetCorruptionFilters() []Filter {
     settings := map[string]Settings {
         "CurseAmulet": { 15, true },
         "EnduranceChargeBelt": { 5, true },

@@ -16,6 +16,7 @@ func loadFilters() []core.Filter {
     filters = append(filters, core.GetCurrencyFilters()...)  
     //filters = append(filters, core.GetEarlyFilters()...)  
     filters = append(filters, core.GetVaalFilters()...)
+    filters = append(filters, core.GetCorruptionFilters()...)
 
     log.Printf("All filters loaded")
 

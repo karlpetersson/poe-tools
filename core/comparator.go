@@ -221,3 +221,14 @@ func (f sixLinkedFilter) compare(item api.Item) bool {
     }
     return false
 }
+
+type hasSocketsFilter struct {
+    Value int
+}
+
+func (f hasSocketsFilter) compare(item api.Item) bool {
+    if len(item.Sockets) == f.Value {
+        return true
+    }
+    return false
+}
