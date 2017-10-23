@@ -115,22 +115,6 @@ func GetOther2Filters() []Filter {
 
 
 
-    // #1 Ancient reliquary key
-    ancientReliquaryKeyFilter := Filter {
-        true,
-        []PropertyFilter {
-            typeFilter {
-                "Ancient Reliquary Key",
-            },
-            priceFilter {
-                50,
-                LessThanOrEqualTo{},
-            },
-        },
-    }
-    filters = append(filters, ancientReliquaryKeyFilter)
-
-   
     // #4 Exalted Orb
     exaFilter := Filter{
         true,
@@ -272,22 +256,7 @@ func GetOther2Filters() []Filter {
     }
     filters = append(filters, theGreenDream)
 
-    grandSpectrum := Filter{
-        true,
-        []PropertyFilter {
-            nameFilter {
-                "Grand Spectrum",
-            },
-            typeFilter {
-                "Viridian Jewel",
-            },
-            priceFilter {
-                25,
-                LessThanOrEqualTo{},
-            },
-        },
-    }
-    filters = append(filters, grandSpectrum)
+
 
     // Uniques
     bereksRespite := Filter{

@@ -2,9 +2,12 @@ package core
 
 func GetEssencesFilters() []Filter {
     settings := map[string]Settings {
-        "DeafeningEssenceOfWrath": { 5, true },
-        "DeafeningEssenceOfSpite": { 5, true },
-        "EssenceOfDelirium": { 10, true },
+        "DeafeningEssenceOfWrath": { 5, false },
+        "DeafeningEssenceOfSpite": { 8, true },
+        "EssenceOfDelirium": { 15, true },
+        "EssenceOfHysteria": { 10, true },
+        "EssenceOfInsanity": { 10, true },
+        "DeafeningEssenceOfAnger": { 5, true },
     }
 
     filters := make([]Filter, 0)
@@ -41,7 +44,7 @@ func GetEssencesFilters() []Filter {
         settings["EssenceOfDelirium"].Enabled,
         []PropertyFilter {
             typeFilter {
-                "Essence Of Delirium",
+                "Essence of Delirium",
             },
             priceFilter {
                 settings["EssenceOfDelirium"].Price,
@@ -51,6 +54,47 @@ func GetEssencesFilters() []Filter {
     }
     filters = append(filters, EssenceOfDelirium)
 
+    EssenceOfHysteria := Filter{
+        settings["EssenceOfHysteria"].Enabled,
+        []PropertyFilter {
+            typeFilter {
+                "Essence of Hysteria",
+            },
+            priceFilter {
+                settings["EssenceOfHysteria"].Price,
+                LessThanOrEqualTo{},
+            },
+        },
+    }
+    filters = append(filters, EssenceOfHysteria)
+
+    EssenceOfInsanity := Filter{
+        settings["EssenceOfInsanity"].Enabled,
+        []PropertyFilter {
+            typeFilter {
+                "Essence of Insanity",
+            },
+            priceFilter {
+                settings["EssenceOfInsanity"].Price,
+                LessThanOrEqualTo{},
+            },
+        },
+    }
+    filters = append(filters, EssenceOfInsanity)
+
+    DeafeningEssenceOfAnger := Filter{
+        settings["DeafeningEssenceOfAnger"].Enabled,
+        []PropertyFilter {
+            typeFilter {
+                "Deafening Essence of Anger",
+            },
+            priceFilter {
+                settings["DeafeningEssenceOfAnger"].Price,
+                LessThanOrEqualTo{},
+            },
+        },
+    }
+    filters = append(filters, DeafeningEssenceOfAnger)
 
     return filters
 }

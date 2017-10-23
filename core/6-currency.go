@@ -5,9 +5,26 @@ func GetCurrencyFilters() []Filter {
         "ExaltedOrb": { 50, true },
         "MirrorOfKalandra": { 4000, true },
         "Eternal Orb": { 800, true },
+        "AncientReliquaryKey": { 50, true },
+        "MortalHope": { 30, true },
+        "MortalIgnorance": { 15, true },
     }
 
     filters := make([]Filter, 0)
+
+    AncientReliquaryKey := Filter{
+        settings["AncientReliquaryKey"].Enabled,
+        []PropertyFilter {
+            typeFilter {
+                "Ancient Reliquary Key",
+            },
+            priceFilter {
+                settings["AncientReliquaryKey"].Price,
+                LessThanOrEqualTo{},
+            },
+        },
+    }
+    filters = append(filters, AncientReliquaryKey)
 
     ExaltedOrb := Filter{
         settings["ExaltedOrb"].Enabled,
@@ -50,6 +67,34 @@ func GetCurrencyFilters() []Filter {
         },
     }
     filters = append(filters, EternalOrb)
+
+    MortalHope := Filter{
+        settings["MortalHope"].Enabled,
+        []PropertyFilter {
+            typeFilter {
+                "Mortal Hope",
+            },
+            priceFilter {
+                settings["MortalHope"].Price,
+                LessThanOrEqualTo{},
+            },
+        },
+    }
+    filters = append(filters, MortalHope)
+
+    MortalIgnorance := Filter{
+        settings["MortalIgnorance"].Enabled,
+        []PropertyFilter {
+            typeFilter {
+                "Mortal Ignorance",
+            },
+            priceFilter {
+                settings["MortalIgnorance"].Price,
+                LessThanOrEqualTo{},
+            },
+        },
+    }
+    filters = append(filters, MortalIgnorance)
 
     return filters
 }

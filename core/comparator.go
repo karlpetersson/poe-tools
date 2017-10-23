@@ -103,7 +103,7 @@ type nameFilter struct {
 }
 
 func (f nameFilter) compare(item api.Item) bool {
-    return strings.Trim(item.Name, "<<set:MS>><<set:M>><<set:S>>") == f.Value
+    return strings.EqualFold(strings.Trim(item.Name, "<<set:MS>><<set:M>><<set:S>>"), f.Value)
 }
 
 type typeFilter struct {
@@ -111,7 +111,7 @@ type typeFilter struct {
 }
 
 func (f typeFilter) compare(item api.Item) bool {
-    return item.Type == f.Value
+    return strings.EqualFold(item.Type, f.Value)
 }
 
 type baseTypeFilter struct {

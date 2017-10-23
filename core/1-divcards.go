@@ -3,13 +3,13 @@ package core
 func GetDivcardsFilters() []Filter {
     settings := map[string]Settings {
         "TheFiend":         { 500, true },
-        "TheDoctor":        { 700, true },
-        "HouseOfMirrors":   { 750, true },
-        "TheQueen":         { 50, true },
+        "TheDoctor":        { 800, true },
+        "HouseOfMirrors":   { 1000, true },
+        "TheQueen":         { 55, true },
         "TheImmortal":      { 80, true },
         "TheOffering":      { 25, true },
-        "AbandonedWealth":  { 35, true },
-        "TheDragonsHeart":  { 0, false },
+        "AbandonedWealth":  { 40, true },
+        "TheDragonsHeart":  { 20, true },
         "TheSpark":         { 0, false },
         "MawrBlaidd":       { 0, false },
         "WealthAndPower":   { 0, false },

@@ -17,6 +17,8 @@ func loadFilters() []core.Filter {
     //filters = append(filters, core.GetEarlyFilters()...)  
     filters = append(filters, core.GetVaalFilters()...)
     filters = append(filters, core.GetCorruptionFilters()...)
+    filters = append(filters, core.GetUniquesFilters()...)
+    filters = append(filters, core.GetOtherFilters()...)
 
     log.Printf("All filters loaded")
 

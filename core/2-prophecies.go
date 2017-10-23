@@ -2,12 +2,12 @@ package core
 
 func GetPropheciesFilters() []Filter {
     settings := map[string]Settings {
-        "TrashToTreasure":  { 4000, true },
-        "FatedConnections": { 500, true },
+        "TrashToTreasure":  { 1500, true },
+        "FatedConnections": { 550, true },
         "LostInPages":      { 40, true },
         "FireAndBrimstone": { 25, true },
         "JewellersTouch":   { 9, true },
-        "MonstrousTreasure": { 10, true },
+        "MonstrousTreasure": { 15, true },
     }
 
     filters := make([]Filter, 0)
